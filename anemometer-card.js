@@ -1,4 +1,4 @@
-const AC_VERSION = "0.1.3";
+const AC_VERSION = "0.1.4";
 
 const AC_T = {
   en: {
@@ -153,15 +153,15 @@ class AnemometerCard extends HTMLElement {
           align-items: center;
           justify-content: space-between;
           color: var(--secondary-text-color);
-          font-size: 18px;
+          font-size: 0.9em;
           pointer-events: none;
         }
 
         .ac-status {
           display: inline-flex;
           align-items: center;
-          gap: 8px;
-          min-height: 26px;
+          gap: 5px;
+          min-height: 20px;
         }
 
         .ac-main {
@@ -441,10 +441,12 @@ class AnemometerCard extends HTMLElement {
     const color = ok ? "var(--secondary-text-color)" : "var(--error-color)";
     const title = ok ? "" : t.offline;
     return `
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="${color}" stroke-width="2.2" stroke-linecap="round">
-        <path d="M5 12.5a10 10 0 0 1 14 0"/>
-        <path d="M8.5 16a5 5 0 0 1 7 0"/>
-        <path d="M12 20h.01"/>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="${color}" stroke-width="2.2" stroke-linecap="round">
+        <path d="M3.5 9.5 A 12 12 0 0 1 20.5 9.5"/>
+        <path d="M6.5 12.7 A 8 8 0 0 1 17.5 12.7"/>
+        <path d="M9.4 15.8 A 4.2 4.2 0 0 1 14.6 15.8"/>
+        <circle cx="12" cy="18.6" r="1.5" fill="currentColor" stroke="none"/>
+        ${ok ? "" : `<line x1="4" y1="3.5" x2="20.5" y2="20"/>`}
       </svg>
       <span>${title}</span>
     `;
@@ -455,13 +457,13 @@ class AnemometerCard extends HTMLElement {
     const battery = acNumber(this._hass, c.battery_entity);
     if (!c.battery_entity || !Number.isFinite(battery)) return "";
     const pct = acClamp(battery, 0, 100);
-    const width = Math.round(28 * pct / 100);
+    const width = Math.round(15 * pct / 100);
     const color = pct <= 20 ? "var(--error-color)" : pct <= 45 ? "var(--warning-color, #d6a23a)" : "#45a557";
     return `
-      <svg width="34" height="22" viewBox="0 0 34 22" fill="none" stroke="var(--secondary-text-color)" stroke-width="2.5">
-        <rect x="1.5" y="3" width="28" height="16" rx="3"/>
-        <path d="M31 8v6"/>
-        <rect x="4" y="5.5" width="${width}" height="11" rx="1.8" fill="${color}" stroke="none"/>
+      <svg width="28" height="16" viewBox="0 0 24 14">
+        <rect x="1" y="2" width="19" height="10" rx="2" fill="none" stroke="var(--secondary-text-color)" stroke-width="1.6"/>
+        <rect x="21" y="5" width="2.4" height="4" rx="1" fill="var(--secondary-text-color)"/>
+        <rect x="3" y="4" width="${width}" height="6" rx="1" fill="${color}"/>
       </svg>
       <span>${Math.round(pct)}%</span>
     `;
