@@ -1,4 +1,4 @@
-const AC_VERSION = "0.1.2";
+const AC_VERSION = "0.1.3";
 
 const AC_T = {
   en: {
@@ -267,7 +267,7 @@ class AnemometerCard extends HTMLElement {
         }
 
         .ac-history {
-          margin-top: 12px;
+          margin-top: 8px;
         }
 
         .ac-history-status {
@@ -529,7 +529,7 @@ class AnemometerCard extends HTMLElement {
       grid += `<text class="ac-hist-axis" x="${tx}" y="${H - 7}" text-anchor="${k === 0 ? "start" : k === 4 ? "end" : "middle"}">${d.getHours()}h</text>`;
     }
     return `
-      <svg viewBox="0 0 ${W} ${H}" width="100%" height="150" preserveAspectRatio="none">
+      <svg viewBox="0 0 ${W} ${H}" style="display:block;width:100%;height:auto;" xmlns="http://www.w3.org/2000/svg">
         ${grid}
         <polygon class="ac-hist-area" points="${area}"/>
         <polyline class="ac-hist-line" points="${points}"/>
