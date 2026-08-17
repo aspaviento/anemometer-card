@@ -1,4 +1,4 @@
-const AC_VERSION = "0.1.0";
+const AC_VERSION = "0.1.1";
 
 const AC_T = {
   en: {
@@ -302,29 +302,6 @@ class AnemometerCard extends HTMLElement {
           opacity: 0.16;
         }
 
-        .ac-rotor-fast {
-          transform-origin: 90px 92px;
-          animation: ac-spin 900ms linear infinite;
-        }
-
-        .ac-rotor-medium {
-          transform-origin: 90px 92px;
-          animation: ac-spin 1500ms linear infinite;
-        }
-
-        .ac-rotor-slow {
-          transform-origin: 90px 92px;
-          animation: ac-spin 2600ms linear infinite;
-        }
-
-        .ac-rotor-still {
-          transform-origin: 90px 92px;
-        }
-
-        @keyframes ac-spin {
-          to { transform: rotate(360deg); }
-        }
-
         @media (max-width: 420px) {
           .ac-card {
             padding: 22px 20px 18px;
@@ -424,9 +401,6 @@ class AnemometerCard extends HTMLElement {
 
   _visualSvg(speed, directionAngle, unavailable) {
     const c = this._config;
-    const value = Number.isFinite(speed) ? speed : 0;
-    const pct = acClamp(value / c.speed_max, 0, 1);
-    const rotorClass = unavailable || value < 1 ? "ac-rotor-still" : value > 25 ? "ac-rotor-fast" : value > 10 ? "ac-rotor-medium" : "ac-rotor-slow";
     const opacity = unavailable ? 0.38 : 1;
     const needle = Number.isFinite(directionAngle) ? directionAngle : 0;
     const stroke = c.accent_color;
@@ -439,22 +413,20 @@ class AnemometerCard extends HTMLElement {
           <text x="76" y="4" text-anchor="middle" fill="var(--secondary-text-color)" font-size="12" font-weight="700">E</text>
           <text x="0" y="84" text-anchor="middle" fill="var(--secondary-text-color)" font-size="12" font-weight="700">S</text>
           <text x="-76" y="4" text-anchor="middle" fill="var(--secondary-text-color)" font-size="12" font-weight="700">W</text>
-          <g transform="rotate(${needle})">
-            <path d="M0 -64 L8 -22 L0 -29 L-8 -22 Z" fill="${stroke}" opacity="0.9"/>
-            <line x1="0" y1="-29" x2="0" y2="42" stroke="${stroke}" stroke-width="3" stroke-linecap="round"/>
-          </g>
         </g>
-        <g transform="translate(15 22)">
-          <line x1="75" y1="96" x2="75" y2="165" stroke="#899" stroke-width="8" stroke-linecap="round"/>
-          <circle cx="75" cy="92" r="16" fill="#f4f8f8" stroke="#789" stroke-width="5"/>
-          <g class="${rotorClass}" style="animation-duration:${(2.8 - pct * 2.1).toFixed(2)}s">
-            <line x1="75" y1="92" x2="75" y2="43" stroke="#789" stroke-width="5" stroke-linecap="round"/>
-            <line x1="75" y1="92" x2="118" y2="117" stroke="#789" stroke-width="5" stroke-linecap="round"/>
-            <line x1="75" y1="92" x2="32" y2="117" stroke="#789" stroke-width="5" stroke-linecap="round"/>
-            <ellipse cx="75" cy="36" rx="20" ry="12" fill="#f4f8f8" stroke="#789" stroke-width="4"/>
-            <ellipse cx="126" cy="122" rx="20" ry="12" fill="#f4f8f8" stroke="#789" stroke-width="4" transform="rotate(30 126 122)"/>
-            <ellipse cx="24" cy="122" rx="20" ry="12" fill="#f4f8f8" stroke="#789" stroke-width="4" transform="rotate(-30 24 122)"/>
-          </g>
+        <g>
+          <line x1="105" y1="122" x2="105" y2="174" stroke="#899" stroke-width="8" stroke-linecap="round"/>
+          <line x1="105" y1="105" x2="105" y2="50" stroke="#789" stroke-width="5" stroke-linecap="round"/>
+          <line x1="105" y1="105" x2="153" y2="132" stroke="#789" stroke-width="5" stroke-linecap="round"/>
+          <line x1="105" y1="105" x2="57" y2="132" stroke="#789" stroke-width="5" stroke-linecap="round"/>
+          <ellipse cx="105" cy="43" rx="20" ry="12" fill="#f4f8f8" stroke="#789" stroke-width="4"/>
+          <ellipse cx="161" cy="137" rx="20" ry="12" fill="#f4f8f8" stroke="#789" stroke-width="4" transform="rotate(30 161 137)"/>
+          <ellipse cx="49" cy="137" rx="20" ry="12" fill="#f4f8f8" stroke="#789" stroke-width="4" transform="rotate(-30 49 137)"/>
+          <circle cx="105" cy="105" r="16" fill="#f4f8f8" stroke="#789" stroke-width="5"/>
+        </g>
+        <g transform="translate(105 105) rotate(${needle})">
+          <path d="M0 -64 L8 -22 L0 -29 L-8 -22 Z" fill="${stroke}" opacity="0.95"/>
+          <line x1="0" y1="-29" x2="0" y2="42" stroke="${stroke}" stroke-width="3" stroke-linecap="round"/>
         </g>
       </svg>
     `;

@@ -1,6 +1,6 @@
 # Anemometer Card
 
-A Home Assistant dashboard card for wind sensors, designed for an anemometer-style view with speed, direction, battery, connectivity, and optional 24 hour history.
+A Home Assistant dashboard card for wind sensors, designed for a static anemometer-style view with speed, direction, battery, connectivity, and optional 24 hour history.
 
 This is a frontend-only Lovelace card. It does not create Home Assistant entities and does not require a custom integration.
 
