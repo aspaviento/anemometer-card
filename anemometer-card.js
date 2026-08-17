@@ -1,4 +1,4 @@
-const AC_VERSION = "0.1.1";
+const AC_VERSION = "0.1.2";
 
 const AC_T = {
   en: {
@@ -138,9 +138,9 @@ class AnemometerCard extends HTMLElement {
 
         .ac-card {
           position: relative;
-          padding: 24px 28px 20px;
+          padding: 20px 28px 16px;
           color: var(--primary-text-color);
-          min-height: 300px;
+          min-height: 276px;
           box-sizing: border-box;
         }
 
@@ -168,9 +168,9 @@ class AnemometerCard extends HTMLElement {
           display: grid;
           grid-template-columns: minmax(130px, 42%) minmax(0, 1fr);
           align-items: center;
-          gap: 22px;
-          min-height: 210px;
-          padding-top: 22px;
+          gap: 18px;
+          min-height: 188px;
+          padding-top: 20px;
         }
 
         .ac-visual {
@@ -185,7 +185,7 @@ class AnemometerCard extends HTMLElement {
         }
 
         .ac-title {
-          margin: 0 0 10px;
+          margin: 0 0 8px;
           font-size: 24px;
           font-weight: 700;
           line-height: 1.15;
@@ -199,7 +199,7 @@ class AnemometerCard extends HTMLElement {
         }
 
         .ac-speed {
-          font-size: clamp(44px, 12vw, 64px);
+          font-size: clamp(42px, 11vw, 60px);
           font-weight: 800;
           line-height: 0.95;
           letter-spacing: 0;
@@ -248,7 +248,7 @@ class AnemometerCard extends HTMLElement {
           justify-content: center;
           gap: 10px;
           width: 100%;
-          margin: 8px 0 0;
+          margin: 2px 0 0;
           border: 0;
           background: transparent;
           color: var(--secondary-text-color);
@@ -267,7 +267,7 @@ class AnemometerCard extends HTMLElement {
         }
 
         .ac-history {
-          margin-top: 18px;
+          margin-top: 12px;
         }
 
         .ac-history-status {
@@ -304,7 +304,7 @@ class AnemometerCard extends HTMLElement {
 
         @media (max-width: 420px) {
           .ac-card {
-            padding: 22px 20px 18px;
+            padding: 20px 20px 16px;
           }
 
           .ac-main {
@@ -405,7 +405,7 @@ class AnemometerCard extends HTMLElement {
     const needle = Number.isFinite(directionAngle) ? directionAngle : 0;
     const stroke = c.accent_color;
     return `
-      <svg width="210" height="210" viewBox="0 0 210 210" role="img" aria-label="Anemometer" style="max-width:100%;height:auto;opacity:${opacity}">
+      <svg width="184" height="184" viewBox="0 0 210 210" role="img" aria-label="Anemometer" style="max-width:100%;height:auto;opacity:${opacity}">
         <circle cx="105" cy="105" r="88" fill="none" stroke="var(--divider-color)" stroke-width="2"/>
         <circle cx="105" cy="105" r="70" fill="none" stroke="var(--divider-color)" stroke-width="1" stroke-dasharray="3 8"/>
         <g transform="translate(105 105)">
