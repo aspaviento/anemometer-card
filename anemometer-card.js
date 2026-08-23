@@ -628,7 +628,7 @@ window.customCards = window.customCards || [];
 window.customCards.push({
   type: "anemometer-card",
   name: "Anemometer Card",
-  description: "A wind card with animated anemometer, direction, battery, connectivity, and optional 24 h history.",
+  description: "A wind card with a static anemometer, direction, battery, connectivity, and optional 24 h history.",
 });
 
 console.info(`%c ANEMOMETER-CARD %c ${AC_VERSION} `, "color: white; background: #4a90a4; font-weight: 700;", "color: #4a90a4; background: white; font-weight: 700;");
